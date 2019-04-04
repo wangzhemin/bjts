@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>报警推送</title>
+    <link rel="stylesheet" href="./static/css/ydui.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <script src="./static/js/ydui.flexible.js"></script>
+
+</head>
+
+<body>
+
+    <div class="warnMessage">
+        <div class="warntitle">尊敬的xxx用户，您好！</div>
+        <dicv class="warnContent">按钮提供五种色系【绿色/红色/橘色/灰色/白底镂空】对应四种场景【安全/危险/警告/禁用/普通】；
+            分别对应</dicv>
+    </div>
+    <div class="m-button">
+        <button type="button" class="btn-block jump btn-primary">告警属实</button>
+        <button type="button" class="btn-block  btn-warning" id="distort">误报</button>
+    </div>
+</body>
+<script src="./static/js/jquery.min.js"></script>
+<script src="./static/js/ydui.js"></script>
+
+<script>
+    ! function (win, $) {
+        var dialog = win.YDUI.dialog;
+        $('.jump').on('click', function () {
+            // 跳转到属实页
+            $(location).attr('href', './confirm.html');
+
+
+
+            // 进行告警属实反馈到总平台
+        });
+        $('#distort').on('click', function () {
+            dialog.confirm('警告', '确定是误报', function () {
+                // 点击误报按钮，反馈到总平台
+
+                dialog.toast('误报提交成功', 'none', 1000);
+            });
+        })
+
+    }(window, jQuery);
+</script>
+
+</html>
